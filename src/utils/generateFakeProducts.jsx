@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 
-const generateFakeProducts = () => {
+const generateFakeProducts = (brandName) => {
   return {
     id: faker.string.uuid(),
     name: faker.commerce.productName(),
@@ -12,14 +12,21 @@ const generateFakeProducts = () => {
     }),
     stars: faker.number.int({ min: 0, max: 5 }),
     reviews: faker.number.int({ min: 10, max: 1200 }),
+    brand:brandName,
   };
 };
 
 export const dataArray = (totalProducts = 10) => {
   const allProducts = [];
 
+  const brands = [];
+
+  for(let i = 0; i < 5; i++){
+    brands.push(faker.company.name());
+  }
+
   for (let i = 0; i < totalProducts; i++) {
-    allProducts.push(generateFakeProducts());
+    allProducts.push(generateFakeProducts(brands[i % brands.length]));
   }
   return allProducts;
 };

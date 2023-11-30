@@ -22,7 +22,7 @@ const SearchModal = () => {
     setTrends(data);
   };
 
-  console.log(trends);
+  console.log(allProducts);
 
   return (
     <div className=" p-6  rounded-md  h-auto w-[850px] bg-white ">
